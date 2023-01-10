@@ -1,0 +1,278 @@
+.digit {
+    width:66px;
+    height:30px;
+    border:1px solid black;
+    border-radius:4px;
+    display:inline-block;
+    margin-bottom:8px;
+    text-align:center;
+    color:black;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:26px;
+    padding:15px 0px;
+    font-weight:bold;
+    margin-left:6px;
+    margin-right:6px;
+}
+.digitnarrow{
+    width:45px;
+    margin-left:2px;
+    margin-right:2px;
+}
+#keyboardrow3, #keyboardrow2, #keyboardrow1, #keyboardrow0{
+    width:100%;
+    text-align:center;
+}
+button{
+    border:1px black solid;
+}
+
+.key{
+    width:25px;
+    height:25px;
+    border:1px solid black;
+    border-radius:4px;
+    display:inline-block;
+    margin:2px 0px;
+    text-align:center;
+    color:black;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:16px;
+    padding:5px;
+    font-weight:bold;
+    cursor: pointer;
+}
+.keylong{
+    width:65px;
+    height:20px;
+    border:1px solid black;
+    border-radius:4px;
+    display:inline-block;
+    margin:2px 0px;
+    text-align:center;
+    color:black;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:16px;
+    padding:5px;
+    font-weight:bold;
+    cursor: pointer;
+}
+.hide {
+    display: none;
+  }
+      
+.popup{
+    font-family:Arial, Helvetica, sans-serif;
+    position:absolute;
+    top:40px;
+    width:300px;
+    padding:20px;
+    margin-left: calc(50% - 180px);
+    background-color:rgba(255, 255, 255,0.9);
+    border-radius:10px;
+    border:1px solid grey;
+    z-index:1000;
+    font-size:20px;
+    text-align:center;
+}
+#instructioncontainer{
+    z-index:1001;
+    height:25px;
+}
+a#instructions {
+    font-family:Arial, Helvetica, sans-serif;
+    /* position:absolute; */
+    width:80px;
+    text-align:center;
+    border-radius:4px;
+    background-color:grey;
+    padding:5px;
+    color:white;
+    margin-bottom:0px;
+    
+    margin-left: calc(50% - 45px);
+    /* z-index:1001; */
+}
+#green,#orange,#gray{
+    height:20px;
+    width:20px;
+    padding:3px;
+    border:1px solid black;
+    color:white;
+    font-weight:bold;
+    font-family:Arial, Helvetica, sans-serif;
+    border-radius:3px;
+}
+#pickwordlength{
+    font-size:23px;
+    font-weight:bold;
+    color:blue;
+    border:0px;
+    border-bottom:1px solid black;
+}
+.startgame{
+    font-size:20px;
+    background-color:green;
+    color:white;
+    font-weight:bold;
+}
+
+#close{
+    font-weight:bold;
+    font-size:18px;
+    background-color:white;
+    border:1px solid gray;
+    padding:4px;
+    height:30px;
+    width:30px;
+    border-radius:9px;
+}
+#challengegame, #playagain, #share, .back{
+    font-size:14px;
+    background-color:green;
+    color:white;
+    font-weight:bold;
+}
+#hiddenmobiletext{
+    display:hidden;
+}
+#gray{
+    background-color:gray;
+}
+.upcoming{
+    border:1px solid rgb(167, 167, 167);
+}
+.rowshrink {
+    transform: scale(0.98); /* Equal to scaleX(0.7) scaleY(0.7) */
+    transition: width 2s;
+    /* background-color: pink; */
+}
+#sharearea{
+    width:80%;
+    height:220px;
+}
+#notdistinct, #clipboard{
+    /* width:100%; */
+    padding:5px;
+    text-align:center;
+    position:absolute;
+    top:10px;
+    font-weight:bold;
+    background-color:rgb(124, 124, 124);
+    border-radius:3px;
+    color:white;
+    font-family:Arial, Helvetica, sans-serif;
+    /* left:50%; */
+    margin-left: calc(50% - 130px);;
+    width:250px;
+    /* margin:; */
+}
+#clipboard{
+    margin-left: calc(50% - 150px);
+}
+
+.none{
+    background-color:gray;
+    color:white;
+}
+.place{
+    background-color:orange;
+    color:white;
+}
+.correct{
+    background-color:rgb(0, 124, 0);
+    color:white;
+}
+
+#gamecontainer, #continue{
+    width:100%;
+    text-align:center;
+    font-family:Arial, Helvetica, sans-serif;
+}
+.row{
+    position:relative;
+    transition:transform .7s;
+}
+#linktxt{
+    width:80%;
+    height:89px;
+}
+@media only screen and (max-width: 600px) {
+    .digit {
+        width:56px;
+        height:30px;
+        font-size:26px;
+        margin-left:3px;
+        margin-right:3px;
+    }
+    .digitnarrow{
+        width:7%;
+        margin-left:1px;
+        margin-right:1px;
+    }
+}
+
+
+@media only screen and (max-width: 500px) {
+    .digit {
+        width:50px;
+        height:24px;
+        font-size:22px;
+        padding:10px 0px;
+        margin-left:2px;
+        margin-right:2px;
+    }
+    .digitnarrow{
+        width:6%;
+        margin-left:1px;
+        margin-right:1px;
+    }
+}
+
+@media only screen and (max-width: 420px) {
+    .digit {
+        width:10%;
+        height:24px;
+        font-size:22px;
+        padding:10px 0px;
+        margin-left:2px;
+        margin-right:2px;
+    }
+    .digitnarrow{
+        width:6.5%;
+        margin-left:1px;
+        margin-right:1px;
+    }
+    .key{
+        width:4%;
+        margin:2px 0px;
+    }
+    .popup{
+        width:260px;
+        padding:20px;
+        margin-left: calc(50% - 160px);
+        font-size:16px;
+    }
+    #clipboard{
+        margin-left: calc(50% - 150px);
+    }
+    
+}
+
+/* @media (prefers-color-scheme: dark) {
+    .key, .keylong{
+        color:white;
+        background-color:black;
+        border:1px solid grey;
+    }
+    body{
+        background-color:black;
+    }
+    .digit{
+        color:white;
+        border-color:white;
+    }
+    .none{
+        background-color:rgb(75, 75, 75);
+    }
+  } */
