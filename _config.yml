@@ -15,7 +15,7 @@ date_format: "%b %-d, %Y"
 header_pages:
  - index.html
  - publications.html
- - CV.html
+ - cv.html
  - blog.html
  - contact.html
 
@@ -32,7 +32,7 @@ bing_verification:
 animated:             false
 show_related_posts:   false
 show_post_footers:    false
-show_social_icons:    true
+show_social_icons:    false
 ajaxify_contact_form: false
 enable_mathjax: true
 extended_fonts: false

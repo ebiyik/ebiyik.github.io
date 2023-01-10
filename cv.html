@@ -1,4 +1,4 @@
-﻿---
+---
 layout: page
 title: CV
 heading: Curriculum Vitae
@@ -34,6 +34,6 @@ function fetchHeader(url, wch) {
 }
 </script>
 
-<p style="margin-bottom:0;"><a href="docs/CV.pdf">Click here for my latest CV in pdf format.</a></p><br />
-<p id="cv_last_update" style="font-size:small;"></p><script>document.getElementById('cv_last_update').innerHTML = "Last updated: " + fetchHeader('docs/CV.pdf','Last-Modified');</script>
+<p style="margin-bottom:0;"><a href="{{ site.baseurl }}/docs/CV.pdf">Click here for my latest CV in pdf format.</a></p><br />
+<p id="cv_last_update" style="font-size:small;"></p><script>document.getElementById('cv_last_update').innerHTML = "Last updated: " + fetchHeader('{{ site.baseurl }}/docs/CV.pdf','Last-Modified');</script>
 
