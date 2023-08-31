@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html><head>
+<title>Numberle</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/numberle.css">
+        <script src="js/jquery.js"></script>
+        <script src="js/arrayfunctions.js"></script>
+        
+        
+        <meta name="description" content="Guess the hidden number with distinct digits.">
+
+        <!-- FB Meta Tags -->
+        <meta property="og:url" content="https://stanford.edu/~ebiyik/numberle/">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Numberle">
+        <meta property="og:description" content="Guess the hidden number with distinct digits.">
+        <meta property="og:image" content="https://stanford.edu/~ebiyik/Numberle/images/logo1200.png">
+
+        <!-- Twitter Meta Tags -->
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:title" content="Numberle">
+        <meta property="twitter:domain" content="stanford.edu">
+        <meta property="twitter:image" content="https://stanford.edu/~ebiyik/Numberle/images/twitter256.png">
+
+        <link href="https://stanford.edu/~ebiyik/Numberle/images/icon32.png" rel="icon shortcut" sizes="3232">
+        <link href="https://stanford.edu/~ebiyik/Numberle/images/icon192.png" rel="apple-touch-icon">
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-GD437D0186"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-GD437D0186');
+        </script>
+
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div id="mainstart" class="hide popup" style="position: fixed;">
+            <b>Numberle</b>
+            <div>Try to guess the correct number whose digits are <b>distinct</b> (and the first digit might be 0). Each guess is submitted by pressing the 'ENTER' key.
+            Once the guess is submitted, each correct digit in the correct position is counted in the <span style="background-color:#bbeebb;">g</span>reen box, and 
+            each correct digit in the incorrect position is counted in the <span style="background-color:#ffd599;">o</span>range box.</div>
+            <br><br>
+            <div>
+                    Start game with a 
+                    <select id="pickwordlength" name="select" style="width:50px;">
+                        <option value="3">3</option>
+                        <option value="4" selected="selected">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="rand">random</option> 
+                </select>
+                -digit number and start guessing.<br><br>
+                <button class="startgame" onclick="startGame();">Start Game</button>
+            </div>
+    
+        </div>
+        <div id="instructioncontainer"><a id="instructions">Instructions</a></div>
+        <div id="instructpop" class="hide popup">
+            <b>Numberle</b>
+            <div>Try to guess the correct number whose digits are <b>distinct</b> (and the first digit might be 0). Each guess is submitted by pressing the 'ENTER' key.
+            Once the guess is submitted, each correct digit in the correct position is counted in the <span style="background-color:#bbeebb;">g</span>reen box, and 
+            each correct digit in the incorrect position is counted in the <span style="background-color:#ffd599;">o</span>range box.</div>
+            <br><br>
+            <button id="close" onclick="$('#instructpop').hide();">X</button>
+            
+        </div>
+
+        <br>
+        <div id="gamecontainer">
+        </div>
+
+        <div id="endgame" class="hide popup" style="position: fixed;">
+            <b>Numberle</b>
+            <div>
+            <br><span id="resultsstring"></span></div>
+            <div id="clipboard" style="display: none;">copied to clipboard</div>
+            <br>
+            <button id="share" onclick="share()">Share Results</button>
+            <textarea id="sharearea"></textarea>
+
+            <button id="playagain" onclick="playAgainButton();">Play Again</button>
+            <br>
+            
+        </div>
+
+        <div id="keyboard">
+            <div id="keyboardrow1">
+                <div class="key" id="0" onclick="onKeyPress(this.id)">0</div>
+                <div class="key" id="1" onclick="onKeyPress(this.id)">1</div>
+                <div class="key" id="2" onclick="onKeyPress(this.id)">2</div>
+                <div class="key" id="3" onclick="onKeyPress(this.id)">3</div>
+                <div class="key" id="4" onclick="onKeyPress(this.id)">4</div>
+                <div class="key" id="5" onclick="onKeyPress(this.id)">5</div>
+                <div class="key" id="6" onclick="onKeyPress(this.id)">6</div>
+                <div class="key" id="7" onclick="onKeyPress(this.id)">7</div>
+                <div class="key" id="8" onclick="onKeyPress(this.id)">8</div>
+                <div class="key" id="9" onclick="onKeyPress(this.id)">9</div>
+            </div>
+            <div id="keyboardrow0">
+                <div class="keylong" id="Enter" onclick="onKeyPress(this.id)">Enter</div>
+                <div class="keylong" id="Backspace" onclick="onKeyPress(this.id)">Delete</div>
+            </div>
+        </div>
+        
+        <br><br>
+        <div>
+            <span style="color: gray; align: center; font-size: 12px;">
+                <strong><u>Acknowledgments</u></strong><br>
+                <strong>Game:</strong> I do not remember who taught me this game. It was 2004 (plus minus 2 years). It is either one of my parents or primary school friends... Whoever that is, thanks.<br>
+                <strong>Code:</strong> I never liked coding front-end, so the interface (and most of the code) is taken from this website: <a href="https://engaging-data.com/wordguessr-wordle/">Engaging Data WordGuessr</a>.<br>
+                <strong>Inspiration:</strong> I saw <a href="https://www.powerlanguage.co.uk/wordle/">Wordle</a> has become super popular on Twitter (hey, you can follow <a href="https://twitter.com/ebiyik_">me</a>), so I thought people may enjoy this game, too. And yes, I am not very creative when it comes to naming things.<br>
+                <strong>Predecessors:</strong> <a href="https://twitter.com/jan_ruscoe/status/1482010536321888259">Jan Ruscoe</a> told me this is a (generalized) version of the board game <a href="https://en.wikipedia.org/wiki/Mastermind_(board_game)">Mastermind</a>. According to Wikipedia, a much older version was called <a href="https://en.wikipedia.org/wiki/Bulls_and_Cows">Bulls and Cows.</a>
+                
+            </span>
+        </div>
+
+        <script>
+            tries=1;
+            wordLength=4;
+            digits=['0','1','2','3','4','5','6','7','8','9'];
+
+            function endGame(){
+                $('#endgame').show();
+            }
+
+            function goToStart(){
+                $(".popup").hide();
+                $("#mainstart").show()
+            }
+
+            function startBlankGame(){
+                $("#mainstart").show();
+            }
+            
+            function shuffle(array) {
+                let currentIndex = array.length,  randomIndex;
+
+                // While there remain elements to shuffle...
+                while (currentIndex != 0) {
+
+                  // Pick a remaining element...
+                  randomIndex = Math.floor(Math.random() * currentIndex);
+                  currentIndex--;
+
+                  // And swap it with the current element.
+                  [array[currentIndex], array[randomIndex]] = [
+                    array[randomIndex], array[currentIndex]];
+                }
+              return array;
+            }
+
+            function startGame(startword){
+            
+                tries = 1;
+                
+                gamehistory=[];
+                $(".popup").hide();
+                
+                $("#sharearea").hide();
+                //get word
+                if ($('#pickwordlength option:selected').val()=='rand'){
+                    wordLength=Math.floor(Math.random()*7.99+3);
+                } else {
+                    wordLength=parseInt($('#pickwordlength option:selected').val());
+                } 
+                // Shuffle array
+                shuffled = shuffle(digits);
+
+                // Get sub-array of first n elements after shuffled
+                word = shuffled.slice(0, wordLength).join('');
+                
+                makeBoard();
+                
+                // $("#playagain").hide();
+                
+                wordarr=word.toUpperCase().split("");
+                row=1;
+                tile=0;
+                guess="";
+                gameover=false;
+
+                $( "a#instructions" ).hover(
+                    function() {
+                        //hover
+                        $("#instructpop").show();
+                    }, function() {
+                       //unhover
+                       $("#instructpop").hide();
+                    }
+                );
+                $( "a#instructions" ).click(function() {
+                    $("#instructpop").show();
+                });
+            }
+
+            // startGame();
+            function onKeyPress(key){
+                if (!gameover){
+                    // console.log(event.key);
+                    if (key >= '0' && key <= '9'){
+                        digit = key;
+                        if(tile<wordLength){
+                            tile++;
+                            guess=guess+digit;
+                            $("#r"+row+"l"+tile).html(digit);
+                        }  
+                        // console.log(row,tile,digit)
+                    } else if (key=="Backspace"){   
+                        $("#r"+row+"l"+tile).html("&nbsp;");
+                        guess=guess.slice(0,-1);
+                        if(tile>0){
+                            tile--;
+                        }
+                        // console.log('Backspace')
+                    } else if (key=="Enter"){
+                        // console.log('Enter')
+                        if (guess.length==wordLength){
+                            if (isDistinct(guess)){
+                                nums = checkGuess(guess);
+                                numPlus = nums[0];
+                                numMinus = nums[1];
+                                if (numPlus == wordLength){
+                                    gameover=true;
+                                    numtries=row;
+                                }
+                                else {
+                                    tries++;
+                                    $("#gamecontainer").append('<div class="row" id="row'+tries+'"><div id="notdistinct" style="display: none;">all digits have to be distinct</div></div>');
+                                    for (var j=0;j<wordLength;j++){
+                                        if (wordLength>=8){
+                                            $("#row"+tries).append(`<div class="digit digitnarrow" id="r${tries}l${(j+1)}">&nbsp;</div>`);
+                                        } else {
+                                            $("#row"+tries).append(`<div class="digit" id="r${tries}l${(j+1)}">&nbsp;</div>`);
+                                        }
+                                    }
+                                    $("#row"+tries).append(`<div class="key" id="r${tries}p" style="background-color: #bbeebb; border: 1px solid black; cursor: auto;">&nbsp;</div>&nbsp;<div class="key" id="r${tries}m" style="background-color: #ffd599; border: 1px solid black; cursor: auto;">&nbsp;</div>`);
+                                }
+                                $("#r"+row+"p").html(numPlus);
+                                $("#r"+row+"m").html(numMinus);
+                                row++;
+                                guess="";
+                                tile=0;
+                                if (gameover){
+                                    $("#resultsstring").html(`You got it in ${numtries} ${(numtries==1?"guess":"guesses")}!`);
+                                    $("#endgame").show();
+                                }
+                            } else {
+                                notDistinct();
+                            }
+                        }
+                    }                    
+                    // console.log(tile)
+                } else {
+                    // console.log("gameover")
+                }
+            }
+            $(this).on('keydown', function(event) {
+                // console.log(event.key)
+                onKeyPress(event.key)
+                
+            })
+            
+            function notDistinct(){
+                $("#row"+(row)+" #notdistinct").show()
+                setTimeout(function(a){$("#row"+(row)+" #notdistinct").hide()},1000);
+                $('#row'+row).toggleClass('rowshrink')
+                setTimeout(function(a){$('#row'+row).toggleClass('rowshrink')},700);
+                
+            };
+
+            function isDistinct(guess){
+                return new Set(guess).size == guess.length;
+            }
+            function makeBoard(){
+                $( "#gamecontainer" ).empty();
+                for (var i=0;i<tries;i++){
+                    $("#gamecontainer").append('<div class="row" id="row'+(i+1)+'"><div id="notdistinct">all digits have to be distinct</div></div>');
+                    $("#row"+(i+1)+" #notdistinct").hide()
+                    
+                    for (var j=0;j<wordLength;j++){
+                        if (wordLength>=8){
+                            $("#row"+(i+1)).append(`<div class="digit digitnarrow" id="r${(i+1)}l${(j+1)}">&nbsp;</div>`);
+                        } else {
+                          $("#row"+(i+1)).append(`<div class="digit" id="r${(i+1)}l${(j+1)}">&nbsp;</div>`);
+                        }
+                    }
+                    $("#row"+(i+1)).append(`<div class="key" id="r${(i+1)}p" style="background-color: #bbeebb; border: 1px solid black; cursor: auto;">&nbsp;</div>&nbsp;<div class="key" id="r${(i+1)}m" style="background-color: #ffd599; border: 1px solid black; cursor: auto;">&nbsp;</div>`);
+                }
+            }
+            function playAgainButton(){
+                $(".popup").hide();
+                $("#mainstart").show();
+            }
+            function checkGuess(guess){
+
+                guessarr=guess.split("");
+                guessarr2=guessarr.slice();
+                wordarr2=wordarr.slice();
+
+                colorarr=fillArray(wordLength,0);
+                
+                var numPlus = 0;
+                var numMinus = 0;
+                for (var i=0;i<guessarr.length;i++){
+                    //check for correct digit placement first
+                    if (guessarr[i]==wordarr[i]){
+                        colorarr[i]=1;
+                        guessarr2[i]='*';
+                        wordarr2[i]='&';
+                        numPlus++;
+                    } 
+                }
+                for (var i=0;i<guessarr.length;i++){
+                    if (colorarr[i]==1){
+
+                    } else if (wordarr2.includes(guessarr2[i])){
+                        colorarr[i]=-1;
+                        tmploc=wordarr2.indexOf(guessarr2[i]);
+                        guessarr2[i]='*'; 
+                        wordarr2[tmploc]='&';
+                        numMinus++;
+                    } else {
+                    }
+                    // console.log(guessarr2,wordarr2)
+                }
+
+                
+                for (var i=0;i<guessarr.length;i++){
+                    $("#r"+row+"l"+(i+1)).removeClass("none place correct")
+
+                    $("#r"+row+"l"+(i+1)).html(guess[i].toUpperCase());
+                    if (true){
+                        code="none"
+                    } else if (colorarr[i]==-1){
+                        code="place"
+                    } else {
+                        code="correct"
+                    }
+                    $("#r"+row+"l"+(i+1)).addClass(code)
+                }
+                
+                gamehistory.push(colorarr);
+                return [numPlus, numMinus];
+            }
+
+        function share(){
+            emojis = ['0️⃣','1️⃣','2️⃣','3️⃣','4️⃣','5️⃣','6️⃣','7️⃣','8️⃣','9️⃣','🔟']
+            sharestring=`#Numberle Challenge (${wordLength} Digit): Won in ${(numtries)} Tries!\n`;
+            for(var i=0 ; i<numtries ; i++){
+                sharestring += emojis[parseInt($("#r"+(i+1)+"p").html())] + `🟩 ` + emojis[parseInt($("#r"+(i+1)+"m").html())] + `🟧\n`;
+            }
+            sharestring+=`Play here: https://stanford.edu/~ebiyik/Numberle`;
+            copyTextToClipboard(sharestring);
+            copied();
+        }
+        
+        function copied(){
+            $("#clipboard").show()
+            setTimeout(function(a){$("#clipboard").hide()},1000);
+        };
+        
+        function fallbackCopyTextToClipboard(text) {
+            var textArea = document.createElement("textarea");
+            textArea.value = text;
+              
+            // Avoid scrolling to bottom
+            textArea.style.top = "0";
+            textArea.style.left = "0";
+            textArea.style.position = "fixed";
+
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+
+            try {
+                var successful = document.execCommand('copy');
+                var msg = successful ? 'successful' : 'unsuccessful';
+                console.log('Fallback: Copying text command was ' + msg);
+            } catch (err) {
+                console.error('Fallback: Oops, unable to copy', err);
+            }
+
+            document.body.removeChild(textArea);
+        }
+        function copyTextToClipboard(text) {
+            if (!navigator.clipboard) {
+                fallbackCopyTextToClipboard(text);
+                return;
+            }
+            navigator.clipboard.writeText(text).then(function() {
+                console.log('Async: Copying to clipboard was successful!');
+            }, function(err) {
+                console.error('Async: Could not copy text: ', err);
+            });
+        }
+
+        makeBoard();
+        startBlankGame();
+        </script>
+
+        
+
+        
+
+
+
+    
+</body></html>

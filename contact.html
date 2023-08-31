@@ -1,0 +1,54 @@
+---
+layout: page
+title: Contact
+permalink: /contact/
+tags: contact, address, email, website
+---
+
+
+  <table style="border:0;">
+  <tr><td valign="top" style="width:100px;"><strong>Email:</strong></td><td>
+    <script type="text/javascript" language="javascript">
+    <!--
+    // Email obfuscator script 2.1 by Tim Williams, University of Arizona
+    // Random encryption key feature coded by Andrew Moulden
+    // This code is freeware provided these four comment lines remain intact
+    // A wizard to generate this code is at http://www.jottings.com/obfuscator/
+    { coded = "{{ site.email_coded }}"
+      key = "{{ site.email_key }}"
+      shift=coded.length
+      link=""
+      for (i=0; i<coded.length; i++) {
+        if (key.indexOf(coded.charAt(i))==-1) {
+          ltr = coded.charAt(i)
+          link += (ltr)
+        }
+        else {     
+          ltr = (key.indexOf(coded.charAt(i))-shift+key.length) % key.length
+          link += (key.charAt(ltr))
+        }
+      }
+    document.write('<a href="mailto:'+link+'">{{ site.email_id }} [at] {{ site.email_domain }} [dot] {{ site.email_extension }}</a>')
+    }
+    //-->
+    </script><noscript>Sorry, you need Javascript on.</noscript>
+  </td></tr>
+  <tr><td valign="top" style="width:100px;"><strong>Homepage:</strong></td><td><a href="{{ site.url }}">{{ site.url }}</a></td></tr>
+  <tr><td valign="top" style="width:100px;"><strong>Address:</strong></td><td>{{ site.physical_address }}</td></tr>
+  </table>
+  <br />
+
+  If you will contact me for a meeting, here is my (probably incomplete) future calendar:
+  <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=2&bgcolor=%23ffffff&ctz=America%2FLos_Angeles&showTitle=0&mode=WEEK&title&showPrint=0&showCalendars=0&src=Y19jcHQ3bHU1YnRsYWFhZDZxdGtvdnJycThwOEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%23D50000&color=%230B8043" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+
+  <!--<h3 id="join">Joining Our Lab (at USC)</h3>
+    <div class="article-wrap" style="line-height:1.5;">
+      Thank you for your interest. See below for information.<br /><br />
+      <table style="border:0;">
+	  <tr><td valign="top" style="width:200px;"><strong>USC Postdocs and Students:</strong></td><td>Please send me an email if you are interested in collaborating!</td></tr>
+	  <tr><td valign="top" style="width:200px;"><strong>Prospective Postdocs:</strong></td><td>Feel free to send me an email!</td></tr>
+	  <tr><td valign="top" style="width:200px;"><strong>Prospective PhD Students:</strong></td><td>We are taking on new PhD students each year, and they are funded through fellowships, RAship, and/or TAship. Please directly <a href="https://www.cs.usc.edu/ph-d-application-information/">apply to the PhD program at the CS department of USC</a>. We ask you to not directly contact us unless you have a question about our lab or research that you could not find online (in which case, please do send email). We cannot individually accept or reject PhD students, nor can we comment on probability of admission.</td></tr>
+	  <tr><td valign="top" style="width:200px;"><strong>Interns:</strong></td><td>We are currently not looking for an intern, sorry!</td></tr>
+      </table>-->
+
+

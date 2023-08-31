@@ -1,0 +1,17 @@
+---
+layout: default
+---
+
+{% assign heading = page.heading | default: page.title %}
+
+<article>
+    <h1>{{ heading }}</h1>
+    <div class="article-wrap" style="line-height:1.5;">
+      {{ content }}
+
+      <!--<a class="twitter-timeline" href="http://twitter.com/{{ site.twitter_username }}" data-widget-id="TODO">Tweets from @{{ site.twitter_username }}</a>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>-->
+    </div><!-- /.article-wrap -->
+    
+</article>
+

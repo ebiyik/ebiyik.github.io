@@ -1,5 +1,6 @@
-_site
-.sass-cache
-.jekyll-cache
-.jekyll-metadata
-vendor
+assets/css/main.min.orig
+docs/CV.tex
+docs/CV_old.docx
+docs/CV_old.pdf
+old/
+images/erdem_old.png
